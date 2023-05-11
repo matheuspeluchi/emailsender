@@ -27,7 +27,8 @@ public class ProductCustomerReaderConfig {
         .name("productCustomerReader")
         .dataSource(dataSource)
         .sql(
-            "select c.id  as  customerId, c.name, c.email, p.id as productId, p.name, p.description, p.price " +
+            "select c.id  as  customerId, c.name as customerName, c.email, " +
+                "p.id as productId, p.name as productName, p.description, p.price " +
                 "from product_customer pc " +
                 "join customer c on (customer = c.id) " +
                 "join product p on (product = p.id)")
@@ -44,12 +45,12 @@ public class ProductCustomerReaderConfig {
         Customer customer = new Customer();
         customer.setId(rs.getInt("customerId"));
         customer.setEmail(rs.getString("email"));
-        customer.setName(rs.getString("name"));
+        customer.setName(rs.getString("customerName"));
 
         Product product = new Product();
         product.setId(rs.getInt("productId"));
         product.setDescription(rs.getString("description"));
-        product.setName(rs.getString("name"));
+        product.setName(rs.getString("productName"));
         product.setPrice(rs.getDouble("price"));
 
         ProductCustomer productCustomer = new ProductCustomer();

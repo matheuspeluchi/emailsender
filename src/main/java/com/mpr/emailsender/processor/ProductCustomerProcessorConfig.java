@@ -27,9 +27,9 @@ public class ProductCustomerProcessorConfig implements ItemProcessor<ProductCust
 
   private String textPromotionGenerate(ProductCustomer ps) {
     StringBuilder writer = new StringBuilder();
-    writer.append(String.format("Hello, s%!%n%n", ps.getCustomer().getName()));
+    writer.append(String.format("Hello, %s!%n%n", ps.getCustomer().getName()));
     writer.append("This offer may be of interest to you! \n\n");
-    writer.append(String.format("$s - $s%n%n", ps.getProduct().getName(), ps.getProduct().getDescription()));
+    writer.append(String.format("%s - %s%n%n", ps.getProduct().getName(), ps.getProduct().getDescription()));
     writer
         .append(String.format("For only: %s!", NumberFormat.getCurrencyInstance().format(ps.getProduct().getPrice())));
 
